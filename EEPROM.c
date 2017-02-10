@@ -69,7 +69,7 @@ void EF_void_EEPROM_Erase(void)
 	U16_t eeprom_address;
 	for(eeprom_address=0; eeprom_address <1024 ; eeprom_address++)
 	{
-	  EEPROM_Write(eeprom_address,0x00);     /* Write Each memory location with OxFF */
+	  EEPROM_Write(eeprom_address,0x00);     /* Write Each memory location with 0x00 */
 	}
 }
 
