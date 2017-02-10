@@ -36,3 +36,40 @@ U8_t DATA=0;
 
 	return DATA;
 }
+
+
+void EEPROM_WRITE_STRING(U8_t addresse,U8_t * str){
+
+  while(*str!='\0'){
+
+	  EEPROM_Write(addresse,(U8_t)*str);
+	  addresse++;
+	  str++;
+  }
+  EEPROM_Write(addresse,(U8_t)'\0');
+}
+
+
+void EEPROM_READ_STRING(U8_t addresse,U8_t ack,U8_t*data){
+
+	*data=EEPROM_Read(addresse,ack);
+	while(*data!='\0'){
+		data++;
+		addresse++;
+		*data=EEPROM_Read(addresse,ack);
+
+
+	}
+	*data=EEPROM_Read(addresse,0);
+	*data=(U8_t)'\0';
+
+}
+void EF_void_EEPROM_Erase(void)
+{
+	U16_t eeprom_address;
+	for(eeprom_address=0; eeprom_address <1024 ; eeprom_address++)
+	{
+	  EEPROM_Write(eeprom_address,0x00);     /* Write Each memory location with OxFF */
+	}
+}
+

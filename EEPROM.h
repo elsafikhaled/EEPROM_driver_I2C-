@@ -21,7 +21,10 @@ U8_t EEPROM_Read(U8_t Addresse,U8_t Ackn);
 
 void EEPROM_Write(U8_t Addresse,U8_t WORDS);
 
+void EEPROM_WRITE_STRING(U8_t addresse,U8_t * str);
 
+void EEPROM_READ_STRING(U8_t addresse,U8_t ack,U8_t*data);
+void EF_void_EEPROM_Erase(void);
 
 
 #endif /* EEPROM_H_ */
